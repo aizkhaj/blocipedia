@@ -1,2 +1,21 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<br>
+<div class="jumbotron">
+  <h1>Wikeez <small>Social, Markdown Wikis</small></h1>
+  <br>
+  <p>Create and Share Markdown Wikis</p>
+  <p>
+    <%= link_to "Sign In", new_user_session_path %> or
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Create as many public wikis as you want!</h3>
+    <%= link_to "Free Plan", '#', class: 'btn btn-secondary' %>
+  </div>
+  <div class="col-md-6">
+    <h3>Create private wikis!</h3>
+    <%= link_to "Premium Plan", '#', class: 'btn btn-primary' %>
+  </div>
+</div>
