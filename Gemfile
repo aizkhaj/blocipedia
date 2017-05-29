@@ -22,6 +22,7 @@ ruby "2.3.1"
  gem 'devise'
  gem 'bootstrap-sass'
  gem 'pundit'
+ gem 'stripe'
 
  group :development, :test do
    gem 'byebug'

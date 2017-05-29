@@ -36,6 +36,11 @@
   </div>
 <% end %>
 
+<% if current_user.premium? %>
+  <h3>Downgrade my account</h3>
+    <p>Want to be Basic again? <%= button_to "Downgrade to Basic", downgrade_path, data: { confirm: "Are you sure you want to downgrade? You will lose the privilege of creating private wikis." } %></p>
+<% end %>
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
