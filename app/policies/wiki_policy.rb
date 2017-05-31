@@ -29,7 +29,12 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope
+      # This allows a user to only see private wikis if they are either an admin or premium user.
+      if user.admin? || user.premium?
+        scope.all
+      else
+        scope.where(private: false)
+      end
     end
   end
 end

@@ -2,13 +2,13 @@ require 'random_data'
 
 # Create users
 5.times do
-  User.create!(
-  email: RandomData.email,
-  password: RandomData.password
+  user = User.create!(
+    email: RandomData.email,
+    password: RandomData.password
   )
+  user.confirm
 end
 users = User.all
-# users.confirm - this doesn't seem to work here. #confirm not recognized
 
 # Create Public Wiki
 50.times do
@@ -27,6 +27,22 @@ admin = User.create!(
   role: 'admin'
 )
 admin.confirm
+
+# Create a premium user
+premium = User.create!(
+  email: 'premium@example.com',
+  password: 'helloworld',
+  role: 'premium'
+)
+premium.confirm
+
+# Create a basic user
+basic = User.create!(
+  email: 'basic@example.com',
+  password: 'helloworld',
+  role: 'basic'
+)
+basic.confirm
 
 puts "Seed finished"
 puts "#{User.count} users created"

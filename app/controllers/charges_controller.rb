@@ -40,8 +40,11 @@ class ChargesController < ApplicationController
   end
 
   def downgrade_to_basic
-    # change user role to :basic
+    # change user role to :basic and makes their private wikis public.
     current_user.basic!
+    current_user.wikis.each do |wiki|
+      wiki.update(private: false)
+    end
     redirect_to edit_user_registration_path
   end
 end
