@@ -23,6 +23,7 @@ ruby "2.3.1"
  gem 'bootstrap-sass'
  gem 'pundit'
  gem 'stripe'
+ gem 'redcarpet'
 
  group :development, :test do
    gem 'byebug'
