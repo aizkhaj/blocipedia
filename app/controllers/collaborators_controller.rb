@@ -5,12 +5,11 @@ class CollaboratorsController < ApplicationController
     wiki = Wiki.find(params[:wiki_id])
     new_collaborator = User.find_by(email: params[:email])
     collaborator = wiki.collaborators.new(user: new_collaborator)
-    possible_duplicate = wiki.collaborators.find_by(user: new_collaborator)
 
     if new_collaborator.nil?
       flash[:alert] = "Collaborator was not added because this user does not exist."
       redirect_to edit_wiki_path(wiki)
-    elsif possible_duplicate == new_collaborator
+    elsif wiki.collaborators.include?(collaborator)
       flash[:alert] = "This collaborator was already added to this wiki."
       redirect_to edit_wiki_path(wiki)
     else
@@ -36,7 +35,6 @@ class CollaboratorsController < ApplicationController
     else
       flash[:alert] = 'Collaborator could not be removed due to an error.'
     end
-
     redirect_to [wiki]
   end
 end
