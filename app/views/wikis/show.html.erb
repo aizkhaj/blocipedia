@@ -3,6 +3,18 @@
     <small><span class="label label-success">private</span></small>
   <% end %>
 </h1>
+<br>
+<small>
+  submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.email %>.
+  Collaborators:
+  <% if @wiki.collaborators.empty? %>
+    There are no collaborators on this wiki.
+  <% else %>
+    <% @wiki.collaborators.each do |collaborator| %>
+      <b><%= collaborator.user.email %></b>
+    <% end %>
+  <% end %>
+</small>
 
 <div class="row">
   <div class="col-md-8">

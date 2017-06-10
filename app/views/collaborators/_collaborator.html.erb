@@ -1,0 +1,6 @@
+<%= form_for collaborator do |f| %>
+  <!-- Enter email address of user you want to add as collaborator -->
+  <%= f.label :collaborators %>
+  <%= f.text_field :collaborators, class: 'form-control', placeholder: "Enter collaborator email" %>
+  <%= f.submit "Add Collaborator", class: 'btn btn-success' %>
+<% end %>

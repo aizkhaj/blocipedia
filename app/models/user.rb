@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
+  has_many :collaborators, through: :wikis
+
   after_initialize :set_default_role
 
   enum role: [:basic, :premium, :admin]

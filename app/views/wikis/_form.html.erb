@@ -18,3 +18,20 @@
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
 <% end %>
+
+<% if @wiki.private? %>
+  <%= form_for [@wiki, Collaborator.new] do |f| %>
+    <div class="form-group">
+      <!-- Enter email address of user you want to add/remove as collaborator -->
+      <%= f.label :collaborator %> <br>
+      <%= email_field_tag :email %>
+      <%= f.submit "Add Collaborator", class: 'btn btn-success' %>
+      <div class="form-group">
+        <% wiki.collaborators.each do |collaborator| %>
+          <%= collaborator.user.email %>
+          <%= link_to "Remove", wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-danger' %> <br>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
